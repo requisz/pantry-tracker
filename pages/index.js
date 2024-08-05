@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import PantryForm from '../components/PantryForm';
 import PantryList from '../components/PantryList';
 import SearchBar from '../components/SearchBar';
+import RemoveItem from '../components/RemoveItem';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -26,6 +27,11 @@ const Home = () => {
       <Row className="mb-4">
         <Col md={{ span: 6, offset: 3 }}>
           <SearchBar onSearch={handleSearch} />
+        </Col>
+      </Row>
+      <Row className="mb-4">
+        <Col md={{ span: 6, offset: 3 }}>
+          <RemoveItem />
         </Col>
       </Row>
       <Row>

@@ -24,7 +24,9 @@ const PantryList = ({ searchQuery }) => {
       {items
         .filter((item) => item.name.toLowerCase().includes(searchQuery.toLowerCase()))
         .map((item) => (
-          <ListGroup.Item key={item.id}>{item.name}</ListGroup.Item>
+          <ListGroup.Item key={item.id}>
+            {item.name} - Quantity: {item.quantity}
+          </ListGroup.Item>
         ))}
     </ListGroup>
   );

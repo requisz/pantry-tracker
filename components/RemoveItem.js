@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { db } from '../src/firebaseConfig';
-import { collection, query, where, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore';
+import { doc, query, where, getDocs, updateDoc, deleteDoc, collection } from 'firebase/firestore';
 import { Form, Button } from 'react-bootstrap';
 
-const PantryForm = () => {
+const RemoveItem = () => {
   const [item, setItem] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleRemove = async (e) => {
     e.preventDefault();
     try {
       const q = query(collection(db, 'pantryItems'), where('name', '==', item));
@@ -15,24 +16,28 @@ const PantryForm = () => {
       if (!querySnapshot.empty) {
         const existingItem = querySnapshot.docs[0];
         const existingItemRef = doc(db, 'pantryItems', existingItem.id);
-        const newQuantity = existingItem.data().quantity + quantity;
-        await updateDoc(existingItemRef, { quantity: newQuantity });
+        const currentQuantity = existingItem.data().quantity;
+        if (currentQuantity > quantity) {
+          await updateDoc(existingItemRef, { quantity: currentQuantity - quantity });
+          setMessage(`${quantity} of ${item} removed from pantry.`);
+        } else {
+          await deleteDoc(existingItemRef);
+          setMessage(`${item} removed from pantry.`);
+        }
       } else {
-        await addDoc(collection(db, 'pantryItems'), {
-          name: item,
-          quantity: quantity,
-        });
+        setMessage("Item not in pantry.");
       }
       setItem('');
       setQuantity(1);
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error("Error removing document: ", error);
+      setMessage("Error removing item.");
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="pantryItem">
+    <Form onSubmit={handleRemove}>
+      <Form.Group controlId="removeItem">
         <Form.Label>Pantry Item</Form.Label>
         <Form.Control
           type="text"
@@ -41,8 +46,8 @@ const PantryForm = () => {
           required
         />
       </Form.Group>
-      <Form.Group controlId="itemQuantity" className="mt-2">
-        <Form.Label>Quantity</Form.Label>
+      <Form.Group controlId="removeQuantity" className="mt-2">
+        <Form.Label>Quantity to Remove</Form.Label>
         <Form.Control
           type="number"
           value={quantity}
@@ -50,11 +55,12 @@ const PantryForm = () => {
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit" className="mt-2">
-        Add Item
+      <Button variant="danger" type="submit" className="mt-2">
+        Remove Item
       </Button>
+      {message && <p className="mt-2">{message}</p>}
     </Form>
   );
 };
 
-export default PantryForm;
+export default RemoveItem;
