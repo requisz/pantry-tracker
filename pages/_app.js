@@ -1,9 +1,11 @@
+// pages/_app.js
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../src/createEmotionCache';
-import '../styles/globals.css';
+import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
+import '../styles/globals.css';  // Ensure this file exists or remove this line if not needed
 
 const clientSideEmotionCache = createEmotionCache();
 
