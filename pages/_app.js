@@ -6,7 +6,7 @@ import createEmotionCache from '../src/createEmotionCache';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/globals.css';
 import AnimatedBackground from '../components/AnimatedBackground';
-import '../styles/animatedBackground.css';
+
 
 const clientSideEmotionCache = createEmotionCache();
 
