@@ -18,11 +18,12 @@ const Home = () => {
       <div className="form-container">
         <PantryForm />
       </div>
-      <div className="form-container">
-        <SearchBar onSearch={handleSearch} />
-      </div>
+      
       <div className="form-container">
         <RemoveItem />
+      </div>
+      <div className="form-container">
+        <SearchBar onSearch={handleSearch} />
       </div>
       <div className="list-container">
         <PantryList searchQuery={searchQuery} />

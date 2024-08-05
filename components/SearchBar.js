@@ -12,7 +12,7 @@ const SearchBar = ({ onSearch }) => {
   return (
     <Form.Control
       type="text"
-      placeholder="Search Pantry Items"
+      placeholder="Filter Pantry Items"
       value={query}
       onChange={handleSearch}
     />

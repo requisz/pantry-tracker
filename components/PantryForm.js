@@ -44,7 +44,7 @@ const PantryForm = () => {
       <Form.Group controlId="itemQuantity" className="mt-2">
         <Form.Label>Quantity</Form.Label>
         <Form.Control
-          type="number"
+          type="text"
           value={quantity}
           onChange={(e) => setQuantity(parseInt(e.target.value))}
           required

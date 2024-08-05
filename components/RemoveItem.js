@@ -49,7 +49,7 @@ const RemoveItem = () => {
       <Form.Group controlId="removeQuantity" className="mt-2">
         <Form.Label>Quantity to Remove</Form.Label>
         <Form.Control
-          type="number"
+          type="text"
           value={quantity}
           onChange={(e) => setQuantity(parseInt(e.target.value))}
           required
