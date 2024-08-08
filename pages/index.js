@@ -3,7 +3,7 @@ import PantryForm from '../components/PantryForm';
 import PantryList from '../components/PantryList';
 import SearchBar from '../components/SearchBar';
 import RemoveItem from '../components/RemoveItem';
-import '../styles/animatedBackground.css';
+import '../styles/globals.css';
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -18,12 +18,11 @@ const Home = () => {
       <div className="form-container">
         <PantryForm />
       </div>
-      
-      <div className="form-container">
-        <RemoveItem />
-      </div>
       <div className="form-container">
         <SearchBar onSearch={handleSearch} />
+      </div>
+      <div className="form-container">
+        <RemoveItem />
       </div>
       <div className="list-container">
         <PantryList searchQuery={searchQuery} />

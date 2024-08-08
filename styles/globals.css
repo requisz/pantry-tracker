@@ -5,9 +5,9 @@
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-    --foreground-rgb: 255, 255, 255; 
-    --background-start-rgb: 238, 119, 82; 
-    --background-end-rgb: 35, 213, 171;
+  --foreground-rgb: 255, 255, 255; 
+  --background-start-rgb: 238, 119, 82; 
+  --background-end-rgb: 35, 213, 171;
 
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
@@ -81,7 +81,10 @@
 
 html,
 body {
-  max-width: 100vw;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
 }
 
@@ -92,12 +95,10 @@ body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
-  height: 100vh;
-  margin: 0;
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;
+  align-items: flex-start;
 }
 
 @keyframes gradient {
@@ -116,11 +117,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
   max-width: 600px;
   padding: 20px;
   box-sizing: border-box;
+  margin: 40px auto;
 }
 
 .form-container {
