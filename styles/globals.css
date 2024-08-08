@@ -130,6 +130,7 @@ body {
   border-radius: 10px;
   margin-bottom: 20px;
   width: 100%;
+  color: black; /* Set text color to black */
 }
 
 .list-container {
@@ -137,6 +138,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   width: 100%;
+  color: black; /* Set text color to black */
 }
 
 h1 {
